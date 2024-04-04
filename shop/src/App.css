@@ -1,16 +1,21 @@
+.main-bg {
+  height: 500px;
+  background-image: url('./img/main.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 1200px) {
+  .main-bg {
+    height: 660px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
