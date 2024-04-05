@@ -5,7 +5,8 @@ import data from './data.js';
 
 function App() {
 
-  let [icecreams] = useState(data)
+  let [ices] = useState(data);
+  let [iceNum, setIceNum] = useState(0);
 
   return (
     <div className="App">
@@ -24,21 +25,7 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + 'img/icecream1.png'} style={{width: '80%'}} />
-            <h4>{icecreams[0].title}</h4>
-            <p>{icecreams[0].content}</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + 'img/icecream2.png'} style={{width: '80%'}} />
-            <h4>{icecreams[1].title}</h4>
-            <p>{icecreams[1].content}</p>
-          </div>
-          <div className="col-md-4">
-            <img src={process.env.PUBLIC_URL + 'img/icecream3.png'} style={{width: '80%'}} />
-            <h4>{icecreams[2].title}</h4>
-            <p>{icecreams[2].content}</p>
-          </div>
+          <Contain ices = {ices} iceNum = {iceNum}/>  
         </div>
       </div>
 
@@ -47,3 +34,13 @@ function App() {
 }
 
 export default App;
+
+function Contain(props) {
+  return (
+    <div className="col-md-4">
+      <img src={props.ices[props.iceNum].img} style={{width: '60%'}} />
+      <h4>{props.ices[props.iceNum].title}</h4>
+      <p>{props.ices[props.iceNum].content}</p>
+    </div>
+  )
+}
