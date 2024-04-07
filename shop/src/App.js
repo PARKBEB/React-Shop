@@ -1,6 +1,6 @@
 import { Button, Navbar, Container, Nav} from 'react-bootstrap';
 import './App.css';
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import Detail from './routes/detail.js';
 import Card from './routes/main.js';
 import data from './data.js';
@@ -10,7 +10,7 @@ import Cart from './routes/cart.js';
 
 // Redux 사용하면 컴포넌트 들이 props 없이 state 공유가능, 공유 필요없으면 안써도 됨
 
-export let Context1 = createContext();
+// export let Context1 = createContext();
 
 function App() {
 

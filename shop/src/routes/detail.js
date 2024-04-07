@@ -2,7 +2,7 @@ import { Nav } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { useState } from 'react';
-import { Context1 } from '../App.js';
+// import { Context1 } from '../App.js';
 
 function Detail(props) {
 
@@ -59,7 +59,7 @@ function Detail(props) {
                         <Nav.Link eventKey="link2" onClick={() => {setTab(2)}}>버튼2</Nav.Link>
                     </Nav.Item>
                 </Nav>
-                <TabContent tab = {tab}/>
+                <TabContent tab = {tab} ices = {props.ices}/>
             </div> 
         )
     } else if(props.ices[id] === undefined){
@@ -69,9 +69,9 @@ function Detail(props) {
     }
 }
 
-function TabContent({tab}) {    
+function TabContent({tab, ices}) {    
     
-    let {ices} = useContext(Context1);
+    // let {ices} = useContext(Context1);
 
     let [fade, setFade] = useState('')
 
