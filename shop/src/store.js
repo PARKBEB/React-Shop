@@ -18,12 +18,17 @@ let items = createSlice({
         state[번호].count++;
       },
       ItemAdd (state, action) {
-        state.push(action.payload);
+        const Index = state.findIndex(item => item.id === action.payload.id);
+        if (Index !== -1) {
+            state[Index].count++;
+        } else {
+            state.push(action.payload);
+        }  
       }, 
       ItemDelete (state, action) {
-        
+        const index = state.findIndex(item => item.id === action.payload);
+        state.splice(index, 1);
       }
-
   }     
 })
 

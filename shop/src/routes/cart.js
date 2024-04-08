@@ -9,14 +9,14 @@ let Child = memo (function() {
     return <div>자식임</div>
 })
 
-function 함수() {
-    return console.log("반복문 10억번 돌린 결과");
-}
+// function 함수() {
+//     return console.log("반복문 10억번 돌린 결과");
+// }
 
 function Cart() {
 
-    let result = 함수();
-    useMemo(() => { return 함수() }, [state])
+    // let result = 함수();
+    // useMemo(() => { return 함수() }, [state])
 
     let state = useSelector((state)=>{ return state })
     let item = state.items
@@ -57,7 +57,7 @@ function Cart() {
                             </td>
                             <td>
                                 <button onClick={() => {
-                                    
+                                    dispatch(ItemDelete(k.id))
                                 }}
                                 >삭제</button>
                             </td>

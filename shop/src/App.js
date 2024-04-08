@@ -24,6 +24,9 @@ function App() {
     }
   }, [])
 
+    let recently = localStorage.getItem('watched');
+    recently = JSON.parse(recently);
+
   // let obj = {name : 'kim'}
   // localStorage.setItem('data', JSON.stringify(obj));
 
@@ -61,7 +64,11 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-
+        {
+          recently.map((a, i) => {
+            return <img src={'https://codingapple1.github.io/shop/shoes' + a + '.jpg'} width="10%" />
+          })
+        }
       <Suspense fallback={<div>로딩중임</div>}>
         <Routes>
           <Route path="/" element={ 
