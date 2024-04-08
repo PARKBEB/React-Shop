@@ -1,16 +1,32 @@
 import { Nav } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { useContext, useEffect } from "react";
 import { useState } from 'react';
+import { ItemAdd } from './../store.js';
 // import { Context1 } from '../App.js';
 
 function Detail(props) {
 
+    let dispatch = useDispatch();
+
+
     let [count, setCount] = useState(0);
+    let {id} = useParams();
+    let 찾은상품 = props.ices.find(x => x.id == id);
     let [write, setWrite] = useState('');
     let [msg, setMsg] = useState(true);
     let [tab, setTab] = useState(0);
-    let {id} = useParams();
+    
+    useEffect(() => {
+        let 꺼낸거 = localStorage.getItem('watched');
+        꺼낸거 = JSON.parse(꺼낸거);
+        꺼낸거.push(찾은상품.id);
+        // Set 자료형 < 중복 제거해줌
+        꺼낸거 = new Set(꺼낸거);
+        꺼낸거 = Array.from(꺼낸거);
+        localStorage.setItem('watched', JSON.stringify(꺼낸거));
+    }, [])
 
     useEffect(() => {
         let a = setTimeout(() => { setMsg(false) }, 2000)
@@ -36,16 +52,18 @@ function Detail(props) {
                 }
                 <div className="row">
                     <div className="col-md-6">
-                    <img src={props.ices[id].img} width="100%" />
+                    <img src={'https://codingapple1.github.io/shop/shoes' + id + '.jpg'} width="100%" />
                     </div>
                     {/* <div>
                         <input onChange={ (e) => { setWrite(e.target.value) }} style={{width: '30%'}}></input>
                     </div> */}
                     <div className="col-md-6">
-                    <h4 className="pt-5">{props.ices[id].title}</h4>
-                    <p>{props.ices[id].content}</p>
-                    <p>{props.ices[id].price}</p>
-                    <button className="btn btn-danger">주문하기</button> 
+                    <h4 className="pt-5">{찾은상품.title}</h4>
+                    <p>{찾은상품.content}</p>
+                    <p>{찾은상품.price}</p>
+                    <button className="btn btn-danger" onClick={() => {
+                        dispatch(ItemAdd( {id : 찾은상품.id , name : 찾은상품.title, count : 1} ))
+                        }}>주문하기</button> 
                     </div>
                 </div>
                 <Nav variant="tabs" defaultActiveKey="link0">
@@ -85,7 +103,7 @@ function TabContent({tab, ices}) {
     }, [tab])
 
     return <div className={`start ${fade}`}>
-        { [<div>{ices[0].title}</div>, <div>내용1</div>, <div>내용2</div>][tab] }
+        { [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab] }
     </div>    
 }
 

@@ -5,9 +5,9 @@ function Card(props) {
     return (
         <div className="col-md-4">
             <Link to={'/detail/' + props.ices.id}>
-                <img src={props.ices.img} style={{width: '60%'}} />
-                <h4>{props.ices.title}</h4>
-                <p>{props.ices.content}</p>
+            <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+            <h4>{ props.ices.title }</h4>
+            <p>{ props.ices.price }</p>
             </Link>
         </div>
     )
