@@ -82,7 +82,7 @@ function Detail(props) {
         )
     } else if(props.ices[id] === undefined){
         return (
-            <div>상세 페이지 없음</div>
+            <div>😥상세 페이지 없음</div>
         )
     }
 }
